@@ -1,20 +1,6 @@
 #include <iostream>
-#include <locale>
 #include <string>
-#include <algorithm>
 #include "network.h"
-
-
-
-Network::Network(){
-  numUsers = 0;
-  for (int i = 0; i< MAX_USERS; i++){
-    for(int j = 0; j < MAX_USERS; j++){
-      following [i][j] == false;
-    }
-  } 
-}
-
 
 int Network::findID(std::string usrn){
 
@@ -31,6 +17,18 @@ return i;
 return -1;
 
 }
+
+Network::Network(){
+  numUsers = 0;
+  for (int i = 0; i< MAX_USERS; i++){
+    for(int j = 0; j < MAX_USERS; j++){
+      following [i][j] == false;
+    }
+  } 
+}
+
+
+
 
 
 bool Network::addUser(std::string usrn, std::string dspn) {
@@ -76,7 +74,7 @@ bool Network::follow (std::string usrn1, std::string usrn2){
 }
 
 void Network::printDot(){
-  std::cout << "diagram {\n";
+  std::cout << "diagraph {\n";
   for (int i = 0; i < numUsers; i++){
     std::cout << " \"@"  << profiles[i].getUsername() <<  "\"" << std::endl;
   }
@@ -91,4 +89,3 @@ void Network::printDot(){
 
 std::cout << "}" << std::endl;
 }
-
