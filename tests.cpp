@@ -1,9 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include <iostream>
-#include "doctest.h"
+
 #include "profile.h"
 #include "network.h"
-
+#include "doctest.h"
 
 
 TEST_CASE ("Profile Class"){
@@ -22,9 +21,9 @@ TEST_CASE ("Network Class") {
     CHECK(nw.addUser("player1", "Jeff") == true);
     CHECK(nw.addUser("player1", "Jeff") == false);
     CHECK(nw.addUser("#play", "John") == false);
-    CHECK(nw.addUser("newcharacter", "Jake") == false);
-    CHECK(nw.addUser("lastplayer", "Jamal") == false);
-    
+    CHECK(nw.addUser("newcharacter", "Jake") == true);
+    CHECK(nw.addUser("lastplayer", "Jamal") == true);
+
     CHECK(nw.follow("player1", "newcharacter") == true);
     CHECK(nw.follow("player1", "who") == false);
     CHECK(nw.follow("player1" , "lastplayer") == true);
